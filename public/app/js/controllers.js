@@ -113,7 +113,7 @@ angular.module('myApp.controllers', [])
 					"z-index": 0
 					}).draggable({ containment: "body", scroll: false });
 
-				$('#menu').addClass('tossing');
+				$('#menu').addClass('shake');
 
 				stackX += 220;
 				if (stackX > ($(window).width() - $(this).width())){
