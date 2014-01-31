@@ -1,0 +1,19 @@
+<ul id="photos">
+	<li data-ng-repeat="image in images" class="photo imageShape">
+			<img data-ng-src="{{ image.images.low_resolution.url }}" class="image imageShape">
+
+		<div class="meta displayNone">
+			<p class="caption">
+				{{ image.caption.text }}
+			</p>
+		</div>
+	</li>
+</ul>
+
+<div id="menu">
+  <label class="label">City:</label> <select class="button" data-ng-change="cityChange()" data-ng-model="city" data-ng-options="city.city as city.name for city in cities"></select>
+  <button id="stack" class="button" type="button" data-ng-click="stack()">Stack</button>
+  <button id="pulse" class="button" type="button" data-ng-click="pulse()">Pulse</button>
+  <button id="rotate" class="button" type="button" data-ng-click="rotate()">Rotate</button>
+  <button id="showCaption" class="button" type="button" data-ng-click="showCaption()">{{caption}}</button>
+</div>

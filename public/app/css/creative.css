@@ -1,0 +1,223 @@
+.rotate{
+    animation-name: spin;
+    -webkit-animation-name: spin;  
+
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+
+    animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+}
+
+
+.slideRight{
+    animation-name: slideRight;
+    -webkit-animation-name: slideRight; 
+
+    animation-duration: 2s; 
+    -webkit-animation-duration: 2s;
+
+    animation-timing-function: ease-in-out; 
+    -webkit-animation-timing-function: ease-in-out;     
+
+    /*visibility: visible !important; */
+}
+
+.pulse{
+    animation-name: pulse;
+    -webkit-animation-name: pulse;  
+
+    animation-duration: 1.5s;   
+    -webkit-animation-duration: 1.5s;
+
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+.shake{
+    animation-name: shake;
+    -webkit-animation-name: shake;    
+
+    animation-duration: 2.5s;   
+    -webkit-animation-duration: 2.5s;
+
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes slideRight {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+    0% {
+        transform: translateX(-150%);
+    }
+    50%{
+        transform: translateX(200%);
+    }
+    55%{
+        transform: translateX(-100%);
+    }
+    60%{
+        transform: translateX(100%);
+    }
+    65%{
+        transform: translateX(-50%);
+    }
+    70%{
+        transform: translateX(50%);
+    }
+    75%{
+        transform: translateX(-30%);
+    }
+    80%{
+        transform: translateX(30%);
+    }
+    85%{
+        transform: translateX(-20%);
+    }   
+    90%{
+        transform: translateX(10%);
+    }           
+    92%{
+        transform: translateX(-10%);
+    }          
+    94%{
+        transform: translateX(7%);
+    }          
+    96%{
+        transform: translateX(-7%);
+    }           
+    98%{
+        transform: translateX(5%);
+    }                        
+    100% {
+        transform: translateX(0%);
+    }   
+}
+
+@-webkit-keyframes slideRight {
+    0% {
+        -webkit-transform: translateX(-150%);
+    }
+    50%{
+        -webkit-transform: translateX(200%);
+    }
+    55%{
+        transform: translateX(-100%);
+    }
+    60%{
+        transform: translateX(100%);
+    }
+    65%{
+        -webkit-transform: translateX(-50%);
+    }
+    70%{
+        -webkit-transform: translateX(50%);
+    }
+    75%{
+        -webkit-transform: translateX(-30%);
+    }
+    80%{
+        -webkit-transform: translateX(30%);
+    }
+    85%{
+        -webkit-transform: translateX(-20%);
+    }           
+    90%{
+        -webkit-transform: translateX(10%);
+    }           
+    92%{
+        -webkit-transform: translateX(-10%);
+    }          
+    94%{
+        -webkit-transform: translateX(7%);
+    }          
+    96%{
+        -webkit-transform: translateX(-7%);
+    }           
+    98%{
+        -webkit-transform: translateX(5%);
+    }                        
+    100% {
+        -webkit-transform: translateX(0%);
+    }   
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+
+@keyframes shake {
+    0% {
+        transform: rotate(-2deg);   
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+    100% {
+        transform: rotate(-2deg);   
+    }                       
+}
+
+@-webkit-keyframes shake {
+    0% {
+        -webkit-transform: rotate(-2deg);   
+    }
+    50% {
+        -webkit-transform: rotate(2deg);
+    }
+    100% {
+        -webkit-transform: rotate(-2deg);   
+    }            
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;       
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1; 
+    }   
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;   
+    }           
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scale(0.95);
+        opacity: 0.7;       
+    }
+    50% {
+        -webkit-transform: scale(1);
+        opacity: 1; 
+    }   
+    100% {
+        -webkit-transform: scale(0.95);
+        opacity: 0.7;   
+    }           
+}
+
