@@ -1,0 +1,118 @@
+.floatwidth {
+	float: left;
+	width: 100%;
+}
+
+html {
+	background: url(../images/bg2.png);
+}
+
+//body {
+//	overflow: hidden;
+//}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+.loading {
+	background: url(../images/ajax-loader.gif) no-repeat center;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	
+	li {
+		padding: 16px;
+		width: 150px;
+		float: left;
+		position: absolute;
+		cursor: url(../images/hand.png), pointer;
+		-moz-transform: scale(1,1);
+		-webkit-transform: scale(1,1);
+		transform: scale(1,1);
+		-webkit-transition: all .25s linear;
+		-moz-transition: all .25s linear;
+		transition: all .25s linear;
+	}
+}
+
+
+
+figure {
+	.floatwidth;
+	clear: both;
+	border: 1px solid #bbb;
+
+	img {
+		.floatwidth;
+	}
+}
+
+.displayNone {
+	display:none;
+}
+
+.meta {
+	height: 75px;
+	clear: both;
+	overflow:scroll;
+	
+	p {
+		font-size: 1em;
+		color: white;
+		font-family: "Patrick Hand", cursive;
+		line-height: 1em;
+		margin: .5em 0;
+	}
+}
+
+#menu {
+	position: fixed;
+	right: 0;
+	padding: 16px;
+	z-index: 100000;
+	font-size: 15px;
+}
+
+#info {
+	#menu;
+	bottom: 0;
+	padding: 8px;
+	
+	p {
+		margin: 0;
+		font-size: .75em;
+	}
+}
+
+.button {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   color: #AB2B11;
+   font-size: 14px;
+   font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   background-color: white;
+   border: 1px solid #AB2B11;
+   }
+.button:hover {
+   border-top-color: #242729;
+   background: #242729;
+   background-color: #AB2B11;
+   color: white;
+   }
+.button:active {
+   background-color: white;
+   color: #AB2B11;
+   }
+
+.label {
+	color: white;
+}
+
