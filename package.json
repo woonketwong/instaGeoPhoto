@@ -13,6 +13,7 @@
         "npm": "1.2.x"
     },
     "dependencies": {
+        "express": "latest",
         "jade": "latest",
         "underscore": "latest",
         "async": "latest",
