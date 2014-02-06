@@ -7,3 +7,9 @@ config.instagram = {
 		"popular": "media/popular",
 		"client_id": "fd41a4cd45c846bb86212503c0e06a15"
 };
+
+module.exports = config;
+
+
+
+

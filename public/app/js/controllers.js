@@ -8,7 +8,6 @@ angular.module('myApp.controllers', [])
 		];
     $scope.caption = "Show Caption";
 
-		var api = config.instagram.url + config.instagram.search + '?lat=%lat%&lng=%lng%&client_id=' + config.instagram.client_id + '&callback=JSON_CALLBACK';
 		var body = $("body");
     
     // remove animation class once its execution is completed
@@ -32,20 +31,26 @@ angular.module('myApp.controllers', [])
 				}
 			}
 			
-			// JSONP API call and update view
-			$http.jsonp( 
-				api
-					.replace('%lat%', findProperty($scope.cities, 'city', $scope.city, 'lat'))
-					.replace('%lng%', findProperty($scope.cities, 'city', $scope.city, 'lng'))
-			).success( function( data ) {
-				$scope.images = data.data;
-				// console.log($scope.images);
-				$timeout($scope.stack);
+			var api = document.URL.match(/.+?(?=#)/) + 'instasearch';
+			console.log("apiURL", api);
 
-			}).error( function() {
-				// On error, try again to fetch images after a short delay
+	    $http({
+	    	method: "GET",
+	    	url: api,
+	    	params: {lat: findProperty($scope.cities, 'city', $scope.city, 'lat'), 
+	    					 lng: findProperty($scope.cities, 'city', $scope.city, 'lng')
+	    					}
+	    })
+	    .success(function(data, status, headers, config){
+				$scope.images = data.data;
+				$timeout($scope.stack);
+	    })
+	    .error(function(data, status, headers, config){
+	    	console.log("Fail");
+	    	$scope.response = "Request Error!";
+	    	// On error, try again to fetch images after a short delay
 				$timeout($scope.fetchImages, 2000);
-			});
+	    });
 		}
 
 		// Fetch images

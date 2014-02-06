@@ -26,6 +26,7 @@
         "url": "latest",
         "node-fs": "latest",
         "querystring": "latest",
-        "http": "latest"
+        "http": "latest",
+        "request": "latest"
     }
 }

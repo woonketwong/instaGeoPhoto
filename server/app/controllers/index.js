@@ -2,12 +2,18 @@ var path = require('path');
 var url = require('url');
 var fs = require('fs');
 var querystring = require('querystring');
+var request = require('request');
+var config = require('../config.js')
 
 module.exports.handleRequest = function (req, res) {
 
   var fileLocation;
   var pathname = url.parse(req.url).pathname;
   var contentType = '';
+  var url_parts = url.parse(req.url, true);
+  var query = url_parts.query;
+  var statusAndBody;
+
 
   var setResponseBodyFromFile = function(fileLocation){
     var responseBody, statusCode;
@@ -20,7 +26,7 @@ module.exports.handleRequest = function (req, res) {
       responseBody = 'Could not find HTML file.';
     }
 
-    completeResponse(statusCode, responseBody);
+    return [statusCode, responseBody];
   };
 
   var checkContentType = function(req){
@@ -43,18 +49,13 @@ module.exports.handleRequest = function (req, res) {
     return result;
   }
 
-  var completeResponse = function(statusCode, responseBody){
+  var completeResponse = function(statusCode, responseBody, type){
 
     var headers = {
-      // "access-control-allow-origin": "*",
-      // "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-      // "access-control-allow-headers": "content-type, accept",
-      // // "access-control-max-age": 1,
-      "Content-Type": contentType
+      "Content-Type": type
     };
 
     res.writeHead(statusCode, headers);
-    console.log("*****", contentType);
     if (contentType.slice(0, 5) === 'image'){
       res.end(responseBody, 'binary');
     } else {
@@ -64,22 +65,35 @@ module.exports.handleRequest = function (req, res) {
 
 
   contentType = checkContentType(req);
-  console.log("contentType", contentType);
 
   console.log("path name", pathname);
+
+  // Routes
   switch(req.method){
     case 'GET':
-      if (pathname === '/') {
+      if (pathname === '/') { // index file
         fileLocation = path.join(__dirname, '../../app/views/index.html');
-        setResponseBodyFromFile(fileLocation);
-      } else {
+        statusAndBody = setResponseBodyFromFile(fileLocation);
+        completeResponse(statusAndBody[0], statusAndBody[1], contentType);
+      } else if (pathname === '/instasearch'){ //instagram geo photo search api
+        var api = config.instagram.url + config.instagram.search + '?lat=' + query["lat"] + '&lng=' + query["lng"]+'&client_id=' + config.instagram.client_id;
+        request(api, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            contentType = 'application/json';
+            completeResponse(200, body, contentType);
+          } else{
+            completeResponse(500, 'Internal server error', contentType);
+          }
+        })
+      } else { // public resources
+        console.log("contentType", contentType);
         fileLocation = path.join(__dirname, '../../../public/app' + pathname);
-        setResponseBodyFromFile(fileLocation);
+        statusAndBody = setResponseBodyFromFile(fileLocation);
+        completeResponse(statusAndBody[0], statusAndBody[1], contentType);
       }
       break;
 
     default:
-      completeResponse(404, 'Not found');
+      completeResponse(404, 'Not found', contentType);
   }
-  console.log('test123');
 };
