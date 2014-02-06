@@ -13,7 +13,6 @@
         "npm": "1.2.x"
     },
     "dependencies": {
-        "express": "latest",
         "underscore": "latest",
         "async": "latest",
         "forever": "latest",
