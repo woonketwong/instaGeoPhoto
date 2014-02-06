@@ -13,7 +13,6 @@ angular.module('myApp.controllers', [])
     // remove animation class once its execution is completed
 		$("body").on("animationEnd webkitAnimationEnd oAnimationEnd",
 	    function(e) {
-	    	console.log(e.target);
         $(e.target).removeClass("rotate slideRight pulse");
 	    }
 		);
@@ -32,7 +31,6 @@ angular.module('myApp.controllers', [])
 			}
 			
 			var api = document.URL.match(/.+?(?=#)/) + 'instasearch';
-			console.log("apiURL", api);
 
 	    $http({
 	    	method: "GET",
@@ -46,7 +44,7 @@ angular.module('myApp.controllers', [])
 				$timeout($scope.stack);
 	    })
 	    .error(function(data, status, headers, config){
-	    	console.log("Fail");
+	    	console.log("http request fails");
 	    	$scope.response = "Request Error!";
 	    	// On error, try again to fetch images after a short delay
 				$timeout($scope.fetchImages, 2000);
@@ -108,7 +106,6 @@ angular.module('myApp.controllers', [])
 			var photo = $(".photo");
 	    
 			photo.each(function() {
-				console.log("this div height", $(this).height());
 
 				$(this).removeClass("pulse");
 

@@ -66,7 +66,7 @@ module.exports.handleRequest = function (req, res) {
 
   contentType = checkContentType(req);
 
-  console.log("path name", pathname);
+  console.log("path:", pathname);
 
   // Routes
   switch(req.method){
@@ -86,7 +86,6 @@ module.exports.handleRequest = function (req, res) {
           }
         })
       } else { // public resources
-        console.log("contentType", contentType);
         fileLocation = path.join(__dirname, '../../../public/app' + pathname);
         statusAndBody = setResponseBodyFromFile(fileLocation);
         completeResponse(statusAndBody[0], statusAndBody[1], contentType);
