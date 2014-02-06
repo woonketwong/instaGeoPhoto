@@ -106,6 +106,7 @@ angular.module('myApp.controllers', [])
 			var photo = $(".photo");
 	    
 			photo.each(function() {
+				console.log("this div height", $(this).height());
 
 				$(this).removeClass("pulse");
 
